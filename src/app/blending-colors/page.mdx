@@ -1,0 +1,139 @@
+
+import BlendingColorsDemo from "@/components/ui/color/blendingColorsDemo";
+import { Heading } from "@/components/Heading";
+import { Button } from "@/components/Button";
+
+export const metadata = {
+  title: 'Palettes • The Color Palette & Naming API Documentation',
+  description:
+    'Welcome to Palettes, the ultimate tool for all your color manipulation and palette generation needs. The API provides a comprehensive suite of functions for designers, developers, and color enthusiasts.',
+}
+
+
+export const sections = [
+  { title: "Making a Request", id: "Making a Request", tag: "GET" },
+  { title: "Blending Colors Demo", id: "demo" },
+];
+
+# Blending Colors
+
+Blend two or more colors seamlessly, simulating paint mixing.
+
+<Note>
+  If you appreciate our API and would like to support us, consider buying our book. It's a great way to deepen your understanding while helping us continue providing quality services. You can find the book at [our book page](/book). Your support is greatly appreciated!
+</Note>
+
+---
+
+<Heading
+  level={2}
+  id='Making a Request'
+  tag={"GET"}
+  label={"/api/v1/blend-colors"}
+>
+  Making A Request
+</Heading>
+
+<Row>
+  <Col>
+    <Properties>
+      <Property name="colors" type="string[]">
+        An array of colors to blend together. Must be at least 2 colors.
+      </Property>
+      <Property name="formats" type="string || string[]">
+        The formats to return the blended color in. Defaults to hex, rgb, and hsl.
+      </Property>
+    </Properties>
+    <div className="not-prose my-6 flex gap-3">
+      <Button href="/request-params" arrow="right">
+        <>Read how these params work</>
+      </Button>
+    </div>
+  </Col>
+  <Col sticky>
+    <CodeGroup title="Example Request" tag="GET" label="/api/v1/blend">
+
+      ```bash
+      curl "https://mogk.io/api/v1/blend-colors?colors=<HEX_ONE>&colors=<HEX_TWO>&colors=<HEX_THREE>"
+      ```
+
+      ```js
+      // JavaScript (using fetch in a browser environment)
+
+      async function request() {
+        const colors = ["#ff0000", "#00ff00", "#0000ff"];
+
+        // convert colors array to an encoded URL query string
+        const params = new URLSearchParams();
+        colors.forEach((color) => params.append("colors", color));
+
+        const response = await fetch(
+          `https://mogk.io/api/v1/blend-colors?${params.toString()}`
+        );
+        const data = await response.json();
+        console.log(data);
+      }
+      ```
+
+      ```python
+      # Python (using requests library)
+      import requests
+
+      response = requests.get('https://mogk.io/api/v1/blend-colors', params={
+        'colors': ['#ff0000', '#00ff00', '#0000ff']
+      })
+      data = response.json()
+      print(data)
+      ```
+
+      ```php
+      // PHP (using cURL)
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, "https://mogk.io/api/v1/blend-colors?colors=%23ff0000&colors=%2300ff00&colors=%230000ff");
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($ch);
+      $data = json_decode($response, true);
+      curl_close($ch);
+
+      print_r($data);
+      ```
+
+      ```ruby
+      # Ruby (using net/http)
+      require 'net/http'
+      require 'uri'
+      require 'json'
+
+      uri = URI('https://mogk.io/api/v1/blend-colors')
+      params = { 'colors' => ['#ff0000', '#00ff00', '#0000ff'] }
+      uri.query = URI.encode_www_form(params)
+
+      response = Net::HTTP.get_response(uri)
+      data = JSON.parse(response.body) if response.is_a?(Net::HTTPSuccess)
+
+      puts data
+      ```
+    </CodeGroup>
+
+    ```json {{ 'title': 'Example Response' }}
+    {
+      "blendedColor": "#804080"
+    }
+    ```
+    
+    ```json {{ 'title': 'Example Error Response' }}
+    {
+      "error": "Please provide at least 2 colors."
+    }
+    ```
+  </Col>
+</Row>
+---
+
+<Heading level={2} id='demo'>
+  Blending Colors Demo
+</Heading>
+
+<BlendingColorsDemo />
+
+---

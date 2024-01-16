@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Manipulate Colors",
+    "description": "Convert colors between various formats RGB, HEX, HSL, adjust brightness, saturation, and more.",
+    "apiEndpoint": "https://mogk.io/api/colors/manipulate",
+    "documentationPath": "/palettes/docs/manipulate-colors"
+  },
+  {
+    "name": "Generate Palettes",
+    "description": "Create beautiful, harmonious color palettes based on your input color.",
+    "apiEndpoint": "https://mogk.io/api/colors/manipulate",
+    "documentationPath": "/palettes/docs/generate-palettes"
+  },
+  {
+    "name": "Create Gradients",
+    "description": "Generate smooth color gradients for design and web development.",
+    "apiEndpoint": "https://mogk.io/api/colors/manipulate",
+    "documentationPath": "/palettes/docs/create-gradients"
+  },
+  {
+    "name": "Retrieve Color Names",
+    "description": "Find the name of the nearest color from a given value.",
+    "apiEndpoint": "https://mogk.io/api/colors/name",
+    "documentationPath": "/palettes/docs/retrieve-color-names"
+  },
+  {
+    "name": "Color Information",
+    "description": "Get detailed information about colors, including complementary colors, triads, and tints.",
+    "apiEndpoint": "https://mogk.io/api/colors/manipulate",
+    "documentationPath": "/palettes/docs/color-information"
+  },
+  {
+    "name": "Gradient Builder",
+    "description": "Craft smooth gradients between two colors along with the number of steps.",
+    "apiEndpoint": "https://mogk.io/api/colors/gradient",
+    "documentationPath": "/palettes/docs/gradient-builder"
+  },
+  {
+    "name": "Color Harmony",
+    "description": "Discover harmonious color schemes based on a single color input.",
+    "apiEndpoint": "https://mogk.io/api/colors/harmony",
+    "documentationPath": "/palettes/docs/color-harmony"
+  },
+  {
+    "name": "Contrast Scoring",
+    "description": "Evaluate text readability over a color, with a score and recommendations for optimal background color.",
+    "apiEndpoint": "https://mogk.io/api/colors/contrast",
+    "documentationPath": "/palettes/docs/contrast-scoring"
+  },
+  {
+    "name": "Color Converting",
+    "description": "Submit a color and receive its equivalent across different color formats.",
+    "apiEndpoint": "https://mogk.io/api/colors/conversion",
+    "documentationPath": "/palettes/docs/color-converting"
+  },
+  {
+    "name": "Color Blending",
+    "description": "Blend two or more colors seamlessly, simulating paint mixing.",
+    "apiEndpoint": "https://mogk.io/api/colors/blend",
+    "documentationPath": "/palettes/docs/blending-colors"
+  }
+]

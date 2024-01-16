@@ -1,0 +1,226 @@
+import { Heading } from "@/components/Heading";
+
+export const metadata = {
+  title: 'Request Paramaters',
+  description:
+    'ery API endpoint accepts color(s) via query params. The API endpoints are designed to send and receive color inputs in a variety of formats.',
+}
+
+export const sections = [
+  { title: "Request parameters", id: "Request Paramaters" },
+  { title: "Response", id: "response" },
+  { title: "Encoding your requests", id: "Encoding your requests" },
+];
+
+
+<Heading level={1} id="params">
+  Request Paramaters and Responses From the Palette Pulse API
+</Heading>
+
+Every API endpoint accepts color(s) via query params. The API endpoints are designed to send and receive color inputs in a variety of formats.
+
+---
+
+<Heading level={2} id="Request Paramaters">
+  Request Paramaters
+</Heading>
+
+<Row>
+  <Col>
+
+    ### Required parameters
+  
+    <Properties>
+  
+      <Property name='color' type='string'>
+
+        The color(s) to be used in the requst. This can be hsl, rgb, or hex.
+
+          <Property name="hex" type="string">
+            Can be "#FAFAFA" or "FAFAFA" or "fafafa"
+          </Property>
+
+          <Property name="hsl" type="string">
+            Can be "hsl(0, 0%, 98%)"
+          </Property>
+
+          <Property name="rgb" type="string">
+            Can be "rgb(250, 250, 250)" 
+          </Property>
+
+        Example Request url:
+        - "https://mogk.io/api/v1/{endpoint}?colors=rgb(135,206,235)"
+
+      </Property>
+    </Properties>
+
+
+    ### Optional parameters
+    <Properties>
+          <Property name='formats' type='string • string[]'>      
+          You can use this paramater on every endpoint to specify the color formats you want the API to return. This can be a single format or an array of formats. By default, the API will return all formats.
+          
+          <Property name="hex" type="string">
+            - hex
+          </Property>
+
+          <Property name="hsl" type="string">
+            - hsl
+          </Property>
+
+          <Property name="rgb" type="string">
+            - rgb
+          </Property>
+          
+          Example Request url:
+            - "https://mogk.io/api/v1/{endpoint}?formats=rgb?formats=hex"
+            _The API will respond with all formats if not specified_
+          </Property>
+    </Properties>
+
+
+  </Col>
+   <Col sticky>
+    <CodeGroup title="Making a request"  tag="GET" label="/api/v1/<ENDPOINT>">
+      ```bash
+      curl "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>"
+      ```
+
+      ```js
+      fetch("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      ```
+
+      ```python
+      # Python (using requests library)
+      import requests
+      response = requests.get("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+      if response.status_code == 200:
+      print(response.json())
+      else:
+      print("Error:", response.status_code)
+      ```
+
+      ```php
+      $curl = curl_init();
+
+      curl_setopt_array($curl, [
+      CURLOPT_URL => "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+      CURLOPT_HTTPHEADER => [
+      "cache-control: no-cache"
+      ],
+      ]);
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+
+      curl_close($curl);
+
+      if ($err) {
+      echo "cURL Error #:" . $err;
+      } else {
+      echo $response;
+      }
+      ```
+
+      ```ruby
+
+      require 'net/http'
+      require 'uri'
+      require 'json'
+
+      uri = URI("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+      response = Net::HTTP.get(uri)
+      puts JSON.parse(response)
+      ```
+    </CodeGroup>
+
+  </Col>
+</Row>
+
+---
+
+<Heading level={2} id="response">
+  Response
+</Heading>
+<Row>
+  <Col>
+
+    This endpoint allows you to retrieve a paginated list of all your messages (in a conversation if a conversation id is provided). By default, a maximum of ten messages are shown per page.
+    <Properties>
+      <Property name="hex" type="string">
+        The Hexadecimal color value with the # symbol.
+      </Property>
+      <Property name="hsl" type="object">
+      The HSL color value object.
+      <Property name="h" type="integer">
+        The hue value.
+      </Property>
+      <Property name="s" type="integer">
+        The saturation value.
+      </Property>
+      <Property name="l" type="integer">
+        The lightness value.
+      </Property>
+      </Property>
+      <Property name="rbg" type="object">
+      The RGB color value object. This object contains the following properties:
+        <Property name="r" type="integer">
+          The red value.
+        </Property>
+        <Property name="g" type="integer">
+          The green value.
+        </Property>
+        <Property name="b" type="integer">
+          The blue value.
+        </Property>
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+    ```json {{ title: 'Response' }}
+    {
+      "hex": "#00ffff",
+      "hsl": 
+      {
+        "h": 180,
+        "s": 100, 
+        "l": 50
+      }, 
+      "rgb": 
+      {
+        "r": 0, 
+        "g": 255, 
+        "b": 255
+      }
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+<Heading level={2} id="Encoding your requests">
+  Encoding your requests
+</Heading>
+Always remember to encode your requests. For example, if you're using JavaScript, you can use the encodeURIComponent() function to encode your query string parameters. If you're using Python, you can use the urllib.parse.quote() function to encode your query string parameters. Encoding ensures that special characters in the URL, like # for hex colors or parentheses in rgb() and hsl() functions, do not interfere with the URL's structure.
+
+<CodeGroup title="Color Format Conversion Examples">
+
+```js
+// JavaScript Example: Encoding a Hexadecimal Color
+const hexColor = encodeURIComponent("#87CEEB");
+
+const url = "https://mogk.io/api/colors/blend?colors=${hexColor}";
+// Use fetch or another method to send the request
+```
+
+</CodeGroup>

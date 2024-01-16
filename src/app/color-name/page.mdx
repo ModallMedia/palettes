@@ -1,0 +1,168 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import ColorPickerAndDisplay from '@/components/ui/color/colorPickerAndDisplay'
+import BlendingColorsDemo from '@/components/ui/color/blendingColorsDemo'
+import { Heading } from '@/components/Heading'
+import { ColorHarmonyDemo } from '@/components/ui/color/colorHarmonyDemo'
+
+export const metadata = {
+  title: 'Color Name API',
+  description:
+    'This API endpoint allows you to get the name of a color based on its hex code.',
+}
+
+export const sections = [
+  { title: "Making a Request", id: "Making a Request", tag: "GET" },
+  { title: "Color Name Demo", id: "demo" },
+];
+
+
+# Color Name API
+
+This API endpoint allows you to get the name of a color based on its hex code. 
+
+<Note>
+  If you appreciate our API and would like to support us, consider buying our book. It's a great way to deepen your understanding while helping us continue providing quality services. You can find the book at [our book page](/book). Your support is greatly appreciated!
+</Note>
+
+---
+
+<Heading
+  level={2}
+  id='making-a-request'
+  tag={"GET"}
+  label={"/api/v1/color-name"}
+>
+  Making A Request
+</Heading>
+<Row>
+  <Col>
+    <Properties>
+      <Property name="hex" type="string">
+        A color to be used for the base of the color scheme.
+      </Property>
+
+      <div className="not-prose py-6 flex gap-3">
+        <Button href="/request-params" arrow="right">
+          <>Read how these params work</>
+        </Button>
+      </div>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+<CodeGroup title="Making a request">
+  ```bash
+  curl "https://yourapi.domain.com/api/v1/color-name?hex=<HEX_CODE>"
+  ```
+  ```js
+// JavaScript (using fetch in a browser environment)
+async function requestColorSchemes() {
+
+  const color = "#ff0000"; // Replace with your color value
+
+  const url = encodeUriComponent(`https://yourapi.domain.com/api/v1/color-name?hex=${color}`);
+
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  return data
+}
+
+```
+
+```python
+# Python (using requests library)
+import requests
+
+def request_color_schemes():
+    color = "#ff0000"  # Replace with your color value
+    url = f"https://yourapi.domain.com/api/v1/color-name?hex={color}"
+    response = requests.get(url)
+    data = response.json()
+    return data
+
+# Call the function
+color_schemes = request_color_schemes()
+print(color_schemes)
+
+````
+
+```php
+// PHP (using cURL)
+function requestColorSchemes() {
+    $color = "#ff0000";  // Replace with your color value
+    $url = "https://yourapi.domain.com/api/v1/color-name?hex=" . urlencode($color);
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($curl);
+    if ($response === false) {
+        curl_close($curl);
+        return null;
+    }
+
+    curl_close($curl);
+    return json_decode($response);
+}
+
+// Call the function
+$colorSchemes = requestColorSchemes();
+print_r($colorSchemes);
+```
+
+```ruby
+# Ruby (using net/http)
+require 'net/http'
+require 'json'
+require 'uri'
+
+def request_color_schemes
+  color = "#ff0000"  # Replace with your color value
+  url = URI("https://yourapi.domain.com/api/v1/color-name?hex=#{URI.encode_www_form_component(color)}")
+
+  response = Net::HTTP.get(url)
+  JSON.parse(response)
+end
+
+# Call the function
+color_schemes = request_color_schemes
+puts color_schemes
+```
+
+</CodeGroup>
+    ```json {{ 'title': 'Example Response' }}
+{
+  "name": "Sky Blue",
+  "hex": "#87CEEB",
+  "rgb": [135, 206, 235],
+    "closest_color": {
+        "hex": "#87CEEB",
+        "label": "Sky Blue"
+      }
+}
+
+    ```
+    ```json {{ 'title': 'Example Error Response' }}
+{
+  "error": "Invalid color HEX code."
+}
+    ```
+  </Col>
+</Row>
+
+<Heading level={2} id="demo">
+  Color Name Demo
+</Heading>
+
+<ColorPickerAndDisplay />
+
+ ## Future Improvements
+ 
+ - Add an optional flag to query from different color sets [Crayola color set](https://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors)
+ - Add an optional flag to query from different color sets [X11 color set](https://en.wikipedia.org/wiki/X11_color_names)
+ - Add an optional flag to query from different color sets [Pantone color set](https://en.wikipedia.org/wiki/List_of_colors:_N%E2%80%93Z)

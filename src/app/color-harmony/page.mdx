@@ -1,0 +1,152 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import ColorPickerAndDisplay from '@/components/ui/color/colorPickerAndDisplay'
+import BlendingColorsDemo from '@/components/ui/color/blendingColorsDemo'
+import { Heading } from '@/components/Heading'
+import { ColorHarmonyDemo } from '@/components/ui/color/colorHarmonyDemo'
+
+export const metadata = {
+  title: 'Palettes • The Color Palette & Naming API Documentation',
+  description:
+    'Welcome to Palettes, the ultimate tool for all your color manipulation and palette generation needs. The API provides a comprehensive suite of functions for designers, developers, and color enthusiasts.',
+}
+
+export const sections = [
+  { title: "Making a Request", id: "Making a Request", tag: "GET" },
+  { title: "Blending Colors Demo", id: "demo" },
+];
+
+
+# Color Harmony API
+
+This API allows you to generate color schemes based on a given color. You can specify the color schemes to generate, as well as the formats to return the colors in.
+
+<Note>
+  If you appreciate our API and would like to support us, consider buying our book. It's a great way to deepen your understanding while helping us continue providing quality services. You can find the book at [our book page](/book). Your support is greatly appreciated!
+</Note>
+---
+
+<Heading
+  level={2}
+  id='making-a-request'
+  tag={"GET"}
+  label={"/api/v1/color-harmony"}
+>
+  Making A Request
+</Heading>
+<Row>
+  <Col>
+    <Properties>
+      <Property name="colors" type="string">
+        A color to be used for the base of the color scheme.
+      </Property>
+      <Property name="formats" type="string || string[] || undefined">
+        The formats to return the blended color in. Defaults to hex, rgb, and hsl.
+      </Property>
+      <Property name="schemes" type="string || string[] || undefined">
+        Optional. Specify the color schemes to generate (e.g., "analogous,monochromatic").
+      </Property>
+
+      <div className="not-prose py-6 flex gap-3">
+        <Button href="/request-params" arrow="right">
+          <>Read how these params work</>
+        </Button>
+      </div>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+<CodeGroup title="Making a request">
+  ```bash
+  curl "https://yourapi.domain.com/api/v1/color-harmony?color=<COLOR_VALUE>&formats=<FORMATS>&schemes=<SCHEMES>"
+  ```
+  ```js
+  // JavaScript (using fetch in a browser environment)
+  async function requestColorSchemes() {
+    const color = "#ff0000"; // Replace with your color value
+    const formats = "hsl,rgb,hex"; // Replace with desired formats
+    const schemes = "analogous,complementary"; // Replace with desired schemes
+
+const response = await fetch(
+`https://yourapi.domain.com/api/v1/color-harmony?color=${color}&formats=${formats}&schemes=${schemes}`
+);
+const data = await response.json();
+console.log(data);
+}
+
+````
+```python
+# Python (using requests library)
+import requests
+
+params = {
+  'color': '#ff0000',  # Replace with your color value
+  'formats': 'hsl,rgb,hex',  # Replace with desired formats
+  'schemes': 'analogous,complementary'  # Replace with desired schemes
+}
+
+response = requests.get('https://yourapi.domain.com/api/v1/color-harmony', params=params)
+data = response.json()
+print(data)
+````
+
+```php
+// PHP (using cURL)
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://yourapi.domain.com/api/v1/color-harmony?color=%23ff0000&formats=hsl,rgb,hex&schemes=analogous,complementary");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+$data = json_decode($response, true);
+curl_close($ch);
+
+print_r($data);
+```
+
+```ruby
+# Ruby (using net/http)
+require 'net/http'
+require 'uri'
+require 'json'
+
+uri = URI('https://yourapi.domain.com/api/v1/color-harmony')
+params = {
+  'color': '#ff0000',  # Replace with your color value
+  'formats': 'hsl,rgb,hex',  # Replace with desired formats
+  'schemes': 'analogous,complementary'  # Replace with desired schemes
+}
+uri.query = URI.encode_www_form(params)
+
+response = Net::HTTP.get_response(uri)
+data = JSON.parse(response.body) if response.is_a?(Net::HTTPSuccess)
+puts data
+```
+
+</CodeGroup>
+    ```json {{ 'title': 'Example Response' }}
+    {
+      "analogous": [
+        {"hsl": {"h": 0, "s": 100, "l": 50}, "hex": "#ff0000", "rgb": {"r": 255, "g": 0, "b": 0}},
+        ...
+      ],
+      "complementary": [
+        {"hsl": {"h": 180, "s": 100, "l": 50}, "hex": "#00ffff", "rgb": {"r": 0, "g": 255, "b": 255}},
+        ...
+      ],
+      ...
+    }
+    ```
+    ```json {{ 'title': 'Example Error Response' }}
+    {
+      "error": "Invalid color format."
+    }
+    ```
+  </Col>
+</Row>
+
+<Heading level={2} id="color-harmony-demo">
+  Color Harmony Demo
+</Heading>
+
+<ColorHarmonyDemo />

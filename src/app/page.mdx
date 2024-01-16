@@ -1,0 +1,59 @@
+
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import {Books}  from '@/components/Books'
+import { HeroPattern } from '@/components/HeroPattern'
+import ColorPickerAndDisplay from "@/components/ui/color/colorPickerAndDisplay";
+import BlendingColorsDemo from "@/components/ui/color/blendingColorsDemo";
+import { Heading } from "@/components/Heading";
+import { ColorHarmonyDemo } from "@/components/ui/color/colorHarmonyDemo";
+import browserMockup from "@/images/browser-mockup.png";
+import Image from 'next/image'
+
+export const metadata = {
+  title: 'Palettes • The Color Palette & Naming API Documentation',
+  description:
+    'Welcome to Palettes, the ultimate tool for all your color manipulation and palette generation needs. The API provides a comprehensive suite of functions for designers, developers, and color enthusiasts.',
+}
+
+
+export const sections = [
+  { title: "Introduction", id: "introduction" },
+  { title: "API Demo", id: "api-demo" },
+  { title: "Products", id: "Products" },
+  { title: "Available Endpoints", id: "available-endpoints" },
+];
+
+<HeroPattern />
+
+# Palettes • The Color Palette & Naming API Documentation
+
+<Heading level={2} id="introduction">
+  Introduction
+</Heading>
+
+Welcome to Palettes, the ultimate tool for all your color manipulation and palette generation needs. The API provides a comprehensive suite of functions for designers, developers, and color enthusiasts.
+
+The **Palettes** API is designed with ease of use in mind, providing you with the capabilities to bring your projects to life with the perfect colors.
+
+<div className="not-prose mb-16 mt-6 flex gap-3">
+  <Button href="/request-params" arrow="right">
+    <>Quickstart</>
+  </Button>
+</div>
+
+
+<Note>
+  This API is provided free of charge for your convenience and experimentation. While we are pleased to offer this service at no cost, we kindly ask that you use it responsibly. Please refrain from overwhelming the server with excessive requests. This helps ensure that all users can enjoy a stable and responsive experience. We appreciate your cooperation and understanding in using this service judiciously.
+</Note>
+
+<Heading level={2} id="api-demo">
+  Palettes API Demo
+</Heading>
+
+<ColorPickerAndDisplay />
+
+
+<Books/>
+
+<Guides />

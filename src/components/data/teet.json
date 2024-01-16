@@ -1,0 +1,802 @@
+[
+  {
+    "hex": "#000000",
+    "label": "Midnight Black"
+  },
+  {
+    "hex": "#000D1B",
+    "label": "Navy Night"
+  },
+  {
+    "hex": "#001A36",
+    "label": "Ocean Deep"
+  },
+  {
+    "hex": "#002751",
+    "label": "Sapphire Blue"
+  },
+  {
+    "hex": "#00346C",
+    "label": "Deep Sea"
+  },
+  {
+    "hex": "#004187",
+    "label": "Marine Blue"
+  },
+  {
+    "hex": "#004EA2",
+    "label": "Azure Waters"
+  },
+  {
+    "hex": "#005BBD",
+    "label": "Cerulean Sky"
+  },
+  {
+    "hex": "#0068D8",
+    "label": "Blue Lagoon"
+  },
+  {
+    "hex": "#0075F3",
+    "label": "Electric Blue"
+  },
+  {
+    "hex": "#00830E",
+    "label": "Lush Green"
+  },
+  {
+    "hex": "#009029",
+    "label": "Emerald Oasis"
+  },
+  {
+    "hex": "#009D44",
+    "label": "Verdant Forest"
+  },
+  {
+    "hex": "#00AA5F",
+    "label": "Mossy Green"
+  },
+  {
+    "hex": "#00B77A",
+    "label": "Jade Jewel"
+  },
+  {
+    "hex": "#00C495",
+    "label": "Tropical Teal"
+  },
+  {
+    "hex": "#00D1B0",
+    "label": "Seafoam Splash"
+  },
+  {
+    "hex": "#00DECB",
+    "label": "Turquoise Tide"
+  },
+  {
+    "hex": "#00EBE6",
+    "label": "Aqua Mist"
+  },
+  {
+    "hex": "#00F901",
+    "label": "Lime Zest"
+  },
+  {
+    "hex": "#01061C",
+    "label": "Inky Blackness"
+  },
+  {
+    "hex": "#011337",
+    "label": "Shadowy Depths"
+  },
+  {
+    "hex": "#012052",
+    "label": "Indigo Night"
+  },
+  {
+    "hex": "#012D6D",
+    "label": "Twilight Blue"
+  },
+  {
+    "hex": "#013A88",
+    "label": "Evening Sky"
+  },
+  {
+    "hex": "#0147A3",
+    "label": "Blue Horizon"
+  },
+  {
+    "hex": "#0154BE",
+    "label": "Cobalt Dream"
+  },
+  {
+    "hex": "#0161D9",
+    "label": "Sky Blue"
+  },
+  {
+    "hex": "#016EF4",
+    "label": "Electric Azure"
+  },
+  {
+    "hex": "#017C0F",
+    "label": "Grass Green"
+  },
+  {
+    "hex": "#01892A",
+    "label": "Forest Canopy"
+  },
+  {
+    "hex": "#019645",
+    "label": "Emerald Green"
+  },
+  {
+    "hex": "#01A360",
+    "label": "Jungle Green"
+  },
+  {
+    "hex": "#01B07B",
+    "label": "Minty Green"
+  },
+  {
+    "hex": "#01BD96",
+    "label": "Teal Dreams"
+  },
+  {
+    "hex": "#01CAB1",
+    "label": "Aquamarine Haze"
+  },
+  {
+    "hex": "#01D7CC",
+    "label": "Cyan Delight"
+  },
+  {
+    "hex": "#01E4E7",
+    "label": "Tiffany Blue"
+  },
+  {
+    "hex": "#01F202",
+    "label": "Neon Green"
+  },
+  {
+    "hex": "#01FF1D",
+    "label": "Lime Burst"
+  },
+  {
+    "hex": "#020C38",
+    "label": "Deep Space"
+  },
+  {
+    "hex": "#021953",
+    "label": "Midnight Blue"
+  },
+  {
+    "hex": "#02266E",
+    "label": "Nautical Navy"
+  },
+  {
+    "hex": "#023389",
+    "label": "Indigo Waters"
+  },
+  {
+    "hex": "#0240A4",
+    "label": "Blue Oasis"
+  },
+  {
+    "hex": "#024DBF",
+    "label": "Cerulean Splash"
+  },
+  {
+    "hex": "#025ADA",
+    "label": "Electric Ocean"
+  },
+  {
+    "hex": "#0267F5",
+    "label": "Azure Sky"
+  },
+  {
+    "hex": "#027510",
+    "label": "Forest Green"
+  },
+  {
+    "hex": "#02822B",
+    "label": "Emerald Meadow"
+  },
+  {
+    "hex": "#028F46",
+    "label": "Minty Emerald"
+  },
+  {
+    "hex": "#029C61",
+    "label": "Jungle Green"
+  },
+  {
+    "hex": "#02A97C",
+    "label": "Seafoam Splash"
+  },
+  {
+    "hex": "#02B697",
+    "label": "Turquoise Tide"
+  },
+  {
+    "hex": "#02C3B2",
+    "label": "Aquamarine Dream"
+  },
+  {
+    "hex": "#02D0CD",
+    "label": "Teal Tango"
+  },
+  {
+    "hex": "#02DDE8",
+    "label": "Sky Blue Breeze"
+  },
+  {
+    "hex": "#02EB03",
+    "label": "Lime Zest"
+  },
+  {
+    "hex": "#02F81E",
+    "label": "Grassy Green"
+  },
+  {
+    "hex": "#030539",
+    "label": "Midnight Ink"
+  },
+  {
+    "hex": "#031254",
+    "label": "Navy Nova"
+  },
+  {
+    "hex": "#031F6F",
+    "label": "Blue Lagoon"
+  },
+  {
+    "hex": "#032C8A",
+    "label": "Cerulean Wave"
+  },
+  {
+    "hex": "#0339A5",
+    "label": "Sapphire Sparkle"
+  },
+  {
+    "hex": "#0346C0",
+    "label": "Electric Cobalt"
+  },
+  {
+    "hex": "#0353DB",
+    "label": "Azure Bliss"
+  },
+  {
+    "hex": "#0360F6",
+    "label": "Sky High"
+  },
+  {
+    "hex": "#036E11",
+    "label": "Forest Fresh"
+  },
+  {
+    "hex": "#037B2C",
+    "label": "Mossy Green"
+  },
+  {
+    "hex": "#038847",
+    "label": "Lush Meadow"
+  },
+  {
+    "hex": "#039562",
+    "label": "Emerald Oasis"
+  },
+  {
+    "hex": "#03A27D",
+    "label": "Jade Jewel"
+  },
+  {
+    "hex": "#03AF98",
+    "label": "Tropical Teal"
+  },
+  {
+    "hex": "#03BCB3",
+    "label": "Cyan Paradise"
+  },
+  {
+    "hex": "#03C9CE",
+    "label": "Robins Egg"
+  },
+  {
+    "hex": "#03D6E9",
+    "label": "Baby Blue"
+  },
+  {
+    "hex": "#03E404",
+    "label": "Neon Green"
+  },
+  {
+    "hex": "#03F11F",
+    "label": "Limeade"
+  },
+  {
+    "hex": "#03FE3A",
+    "label": "Spring Fling"
+  },
+  {
+    "hex": "#040B55",
+    "label": "Dark Indigo"
+  },
+  {
+    "hex": "#041870",
+    "label": "Midnight Blue"
+  },
+  {
+    "hex": "#04258B",
+    "label": "Royal Blue"
+  },
+  {
+    "hex": "#0432A6",
+    "label": "Deep Sea"
+  },
+  {
+    "hex": "#043FC1",
+    "label": "Cobalt Crush"
+  },
+  {
+    "hex": "#044CDC",
+    "label": "Electric Blueberry"
+  },
+  {
+    "hex": "#0459F7",
+    "label": "Clear Sky"
+  },
+  {
+    "hex": "#046712",
+    "label": "Leafy Green"
+  },
+  {
+    "hex": "#04742D",
+    "label": "Evergreen Forest"
+  },
+  {
+    "hex": "#048148",
+    "label": "Teal Terrace"
+  },
+  {
+    "hex": "#048E63",
+    "label": "Mint Mojito"
+  },
+  {
+    "hex": "#049B7E",
+    "label": "Fern Green"
+  },
+  {
+    "hex": "#04A899",
+    "label": "Turquoise Treasure"
+  },
+  {
+    "hex": "#04B5B4",
+    "label": "Aqua Mist"
+  },
+  {
+    "hex": "#04C2CF",
+    "label": "Caribbean Blue"
+  },
+  {
+    "hex": "#04CFEA",
+    "label": "Poolside Paradise"
+  },
+  {
+    "hex": "#04DD05",
+    "label": "Lime Sherbet"
+  },
+  {
+    "hex": "#04EA20",
+    "label": "Green Envy"
+  },
+  {
+    "hex": "#04F73B",
+    "label": "Emerald Enchantment"
+  },
+  {
+    "hex": "#050456",
+    "label": "Shadow Black"
+  },
+  {
+    "hex": "#051171",
+    "label": "Midnight Plum"
+  },
+  {
+    "hex": "#051E8C",
+    "label": "Midnight Blue"
+  },
+  {
+    "hex": "#052BA7",
+    "label": "Sapphire Dream"
+  },
+  {
+    "hex": "#0538C2",
+    "label": "Electric Blue"
+  },
+  {
+    "hex": "#0545DD",
+    "label": "Blueberry Blast"
+  },
+  {
+    "hex": "#0552F8",
+    "label": "Cosmic Cobalt"
+  },
+  {
+    "hex": "#056013",
+    "label": "Forest Fern"
+  },
+  {
+    "hex": "#056D2E",
+    "label": "Jade Oasis"
+  },
+  {
+    "hex": "#057A49",
+    "label": "Teal Tempest"
+  },
+  {
+    "hex": "#058764",
+    "label": "Emerald Isle"
+  },
+  {
+    "hex": "#05947F",
+    "label": "Minty Teal"
+  },
+  {
+    "hex": "#05A19A",
+    "label": "Turquoise Tranquility"
+  },
+  {
+    "hex": "#05AEB5",
+    "label": "Aqua Sky"
+  },
+  {
+    "hex": "#05BBD0",
+    "label": "Caribbean Waters"
+  },
+  {
+    "hex": "#05C8EB",
+    "label": "Sky Blue Serenade"
+  },
+  {
+    "hex": "#05D606",
+    "label": "Lime Zest"
+  },
+  {
+    "hex": "#05E321",
+    "label": "Spring Meadow"
+  },
+  {
+    "hex": "#05F03C",
+    "label": "Kiwi Splash"
+  },
+  {
+    "hex": "#05FD57",
+    "label": "Lush Green"
+  },
+  {
+    "hex": "#060A72",
+    "label": "Navy Twilight"
+  },
+  {
+    "hex": "#06178D",
+    "label": "Sapphire Sea"
+  },
+  {
+    "hex": "#0624A8",
+    "label": "Dreamy Blue"
+  },
+  {
+    "hex": "#0631C3",
+    "label": "Cornflower Delight"
+  },
+  {
+    "hex": "#063EDE",
+    "label": "Electric Azure"
+  },
+  {
+    "hex": "#064BF9",
+    "label": "Cerulean Skies"
+  },
+  {
+    "hex": "#065914",
+    "label": "Evergreen Forest"
+  },
+  {
+    "hex": "#06662F",
+    "label": "Mossy Meadow"
+  },
+  {
+    "hex": "#06734A",
+    "label": "Earthly Brown"
+  },
+  {
+    "hex": "#068065",
+    "label": "Seafoam Mist"
+  },
+  {
+    "hex": "#068D80",
+    "label": "Aqua Marine"
+  },
+  {
+    "hex": "#069A9B",
+    "label": "Ocean Breeze"
+  },
+  {
+    "hex": "#06A7B6",
+    "label": "Tropical Tide"
+  },
+  {
+    "hex": "#06B4D1",
+    "label": "Icy Waters"
+  },
+  {
+    "hex": "#06C1EC",
+    "label": "Fresh Sky"
+  },
+  {
+    "hex": "#06CF07",
+    "label": "Lime Sherbet"
+  },
+  {
+    "hex": "#06DC22",
+    "label": "Zesty Green"
+  },
+  {
+    "hex": "#06E93D",
+    "label": "Spring Citrus"
+  },
+  {
+    "hex": "#06F658",
+    "label": "Vibrant Grass"
+  },
+  {
+    "hex": "#070373",
+    "label": "Inky Indigo"
+  },
+  {
+    "hex": "#07108E",
+    "label": "Royal Blue"
+  },
+  {
+    "hex": "#071DA9",
+    "label": "Electric Ocean"
+  },
+  {
+    "hex": "#072AC4",
+    "label": "Blue Lagoon"
+  },
+  {
+    "hex": "#0737DF",
+    "label": "Periwinkle Paradise"
+  },
+  {
+    "hex": "#0744FA",
+    "label": "Electric Lavender"
+  },
+  {
+    "hex": "#075215",
+    "label": "Enchanted Forest"
+  },
+  {
+    "hex": "#075F30",
+    "label": "Hunter Green"
+  },
+  {
+    "hex": "#076C4B",
+    "label": "Mink Brown"
+  },
+  {
+    "hex": "#077966",
+    "label": "Jungle Green"
+  },
+  {
+    "hex": "#078681",
+    "label": "Teal Tide"
+  },
+  {
+    "hex": "#07939C",
+    "label": "Turquoise Tranquil"
+  },
+  {
+    "hex": "#07A0B7",
+    "label": "Caribbean Blue"
+  },
+  {
+    "hex": "#07ADD2",
+    "label": "Aqua Sky"
+  },
+  {
+    "hex": "#07BAED",
+    "label": "Cerulean Splash"
+  },
+  {
+    "hex": "#07C808",
+    "label": "Lime Zest"
+  },
+  {
+    "hex": "#07D523",
+    "label": "Emerald Burst"
+  },
+  {
+    "hex": "#07E23E",
+    "label": "Spring Fizz"
+  },
+  {
+    "hex": "#07EF59",
+    "label": "Mint Breeze"
+  },
+  {
+    "hex": "#07FC74",
+    "label": "Lively Green"
+  },
+  {
+    "hex": "#08098F",
+    "label": "Midnight Blueberry"
+  },
+  {
+    "hex": "#0816AA",
+    "label": "Electric Indigo"
+  },
+  {
+    "hex": "#0823C5",
+    "label": "Royal Cobalt"
+  },
+  {
+    "hex": "#0830E0",
+    "label": "Vibrant Purple"
+  },
+  {
+    "hex": "#083DFB",
+    "label": "Ultraviolet Burst"
+  },
+  {
+    "hex": "#084B16",
+    "label": "Forest Shade"
+  },
+  {
+    "hex": "#085831",
+    "label": "Evergreen"
+  },
+  {
+    "hex": "#08654C",
+    "label": "Teal Oasis"
+  },
+  {
+    "hex": "#087267",
+    "label": "Jungle Green"
+  },
+  {
+    "hex": "#087F82",
+    "label": "Marine Turquoise"
+  },
+  {
+    "hex": "#088C9D",
+    "label": "Blue Lagoon"
+  },
+  {
+    "hex": "#0899B8",
+    "label": "Crystal Clear Sky"
+  },
+  {
+    "hex": "#08A6D3",
+    "label": "Ocean Wave"
+  },
+  {
+    "hex": "#08B3EE",
+    "label": "Azure Paradise"
+  },
+  {
+    "hex": "#08C109",
+    "label": "Lime Fizz"
+  },
+  {
+    "hex": "#08CE24",
+    "label": "Spring Lush"
+  },
+  {
+    "hex": "#08DB3F",
+    "label": "Fluorescent Green"
+  },
+  {
+    "hex": "#08E85A",
+    "label": "Enchanted Meadow"
+  },
+  {
+    "hex": "#08F575",
+    "label": "Fresh Mint"
+  },
+  {
+    "hex": "#090290",
+    "label": "Nightfall Blue"
+  },
+  {
+    "hex": "#090FAB",
+    "label": "Blueberry Dream"
+  },
+  {
+    "hex": "#091CC6",
+    "label": "Sapphire Serenade"
+  },
+  {
+    "hex": "#0929E1",
+    "label": "Electric Blue"
+  },
+  {
+    "hex": "#0936FC",
+    "label": "Luminous Periwinkle"
+  },
+  {
+    "hex": "#094417",
+    "label": "Pine Forest"
+  },
+  {
+    "hex": "#095132",
+    "label": "Dark Teal"
+  },
+  {
+    "hex": "#095E4D",
+    "label": "Green Oasis"
+  },
+  {
+    "hex": "#096B68",
+    "label": "Serenity Sea"
+  },
+  {
+    "hex": "#097883",
+    "label": "Turquoise Mist"
+  },
+  {
+    "hex": "#09859E",
+    "label": "Astral Blue"
+  },
+  {
+    "hex": "#0992B9",
+    "label": "Cerulean Breeze"
+  },
+  {
+    "hex": "#099FD4",
+    "label": "Aquamarine Delight"
+  },
+  {
+    "hex": "#09ACEF",
+    "label": "Sky Harmony"
+  },
+  {
+    "hex": "#09BA0A",
+    "label": "Lime Punch"
+  },
+  {
+    "hex": "#09C725",
+    "label": "Fresh Grass"
+  },
+  {
+    "hex": "#09D440",
+    "label": "Zesty Green"
+  },
+  {
+    "hex": "#09E15B",
+    "label": "Green Energy"
+  },
+  {
+    "hex": "#09EE76",
+    "label": "Spring Meadow"
+  },
+  {
+    "hex": "#09FB91",
+    "label": "Radiant Lime"
+  },
+  {
+    "hex": "#0A08AC",
+    "label": "Moonlit Indigo"
+  },
+  {
+    "hex": "#0A15C7",
+    "label": "Electric Blueberry"
+  },
+  {
+    "hex": "#0A22E2",
+    "label": "Blue Sky Delight"
+  },
+  {
+    "hex": "#0A2FFD",
+    "label": "Azure Sparkle"
+  }
+]
