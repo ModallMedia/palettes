@@ -21,7 +21,7 @@ export function Layout({
 
   console.log(pathname)
 
-  if (pathname.includes('/book')) {
+  if (pathname.includes('/book') || pathname.includes('/generator')) {
     return (
       <SectionProvider sections={allSections[pathname] ?? []}>
         <div className="h-fit">
