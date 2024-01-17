@@ -12,9 +12,9 @@ function BlendingColorsDemo() {
 
   useEffect(() => {
     const fetchBlended = async () => {
-      const url = `/api/v1/blend-colors?colors=${encodeURIComponent(
+      const url = `/api/v1/blend-colors?color=${encodeURIComponent(
         hex1,
-      )}&colors=${encodeURIComponent(hex2)}`
+      )}&color=${encodeURIComponent(hex2)}`
       const request = await fetch(url)
       const response = await request.json()
       setHex(response.blendedColor) // Ensure that 'response.blendedColor' is the correct key

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ColorDisplay } from './colorDisplay'
 import ColorPicker from './colorPicker'
 import { isColorDark } from '@/lib/color/helpers/isColorDark'
+import { DynamicColorDisplay } from './dynamicColorDisplay'
 
 // a function that converts a hex code with or without the # to an hsl object
 
@@ -50,6 +51,7 @@ const ColorContainer = ({
     </div>
   )
 }
+
 export function ColorHarmonyDemo() {
   const [hex, setHex] = useState('#F8D7B1')
   const [response, setResponse] = useState<any>(null)
@@ -68,40 +70,25 @@ export function ColorHarmonyDemo() {
   console.log(response)
   return (
     <div className="flex max-w-3xl flex-col lg:max-w-5xl">
-      <div className="flex w-full gap-4 py-4">
+      <div className="not-prose flex w-full max-w-3xl gap-4 border-t border-zinc-900/5 pt-10 max-sm:flex-col max-sm:justify-center first:max-sm:mx-auto lg:max-w-5xl ">
         <ColorPicker hex={hex} setHex={setHex} />
         <ColorDisplay hex={hex} />
       </div>
-      <div className="not-prose mb-2 flex flex-wrap gap-y-4 border-t border-zinc-950/5 pt-4">
+      <div className="not-prose mb-2 grid grid-cols-1 flex-wrap gap-4 gap-y-4 pt-4 md:grid-cols-2">
         {response !== null && (
           <>
             {Object.keys(response).map((schemeName) => {
               const schemeColors = response[schemeName]
-              const columnClass = `grid grid-cols-${
-                schemeColors.length + 1
-              } w-full`
-
               return (
-                <div
-                  className="flex w-1/2 flex-col gap-4 odd:pr-2 even:pl-2"
+                <DynamicColorDisplay
                   key={schemeName}
-                >
-                  <h2 className="col-span-full w-full font-bold capitalize ">
-                    {schemeName.toLowerCase() === 'splitcomplementary'
+                  colors={schemeColors.map(({ hex }: { hex: string }) => hex)}
+                  title={
+                    schemeName.toLowerCase() === 'splitcomplementary'
                       ? 'Split Complementary'
-                      : schemeName}
-                  </h2>
-                  <div className="flex w-full flex-row">
-                    {schemeColors.map((color: any, index: number) => (
-                      <ColorContainer
-                        key={index}
-                        className={'p-4 first:rounded-l-2xl last:rounded-r-2xl'}
-                        hex={color.hex}
-                        hsl={color.hsl}
-                      />
-                    ))}
-                  </div>
-                </div>
+                      : schemeName
+                  }
+                />
               )
             })}
           </>

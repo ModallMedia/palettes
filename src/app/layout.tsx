@@ -13,8 +13,8 @@ const inter = Montserrat({
 })
 export const metadata: Metadata = {
   title: {
-    template: '%s - Protocol API Reference',
-    default: 'Protocol API Reference',
+    template: '%s - Palettes',
+    default: 'Palettes.',
   },
 }
 

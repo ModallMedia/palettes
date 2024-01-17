@@ -234,7 +234,7 @@ export const navigation: Array<NavGroup> = [
     title: 'Guides',
     links: [
       { title: 'Introduction', href: '/' },
-      { title: 'Request Parameters', href: '/request-params' },
+      { title: 'Making a Request', href: '/first-request' },
     ],
   },
   {

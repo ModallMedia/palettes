@@ -1,9 +1,9 @@
 import { Heading } from "@/components/Heading";
 
 export const metadata = {
-  title: 'Request Paramaters',
+  title: 'Making Your First Request',
   description:
-    'ery API endpoint accepts color(s) via query params. The API endpoints are designed to send and receive color inputs in a variety of formats.',
+    'every API endpoint accepts color(s) via query params. The API endpoints are designed to send and receive color inputs in a variety of formats.',
 }
 
 export const sections = [
@@ -13,17 +13,17 @@ export const sections = [
 ];
 
 
-<Heading level={1} id="params">
-  Request Paramaters and Responses From the Palette Pulse API
+<Heading level={1} id="first-request">
+  Making Your First Request to the Palettes API
 </Heading>
 
-Every API endpoint accepts color(s) via query params. The API endpoints are designed to send and receive color inputs in a variety of formats.
-
----
+Every API endpoint accepts a color via query params in the same format to make the API as easy to use as possible. 
 
 <Heading level={2} id="Request Paramaters">
   Request Paramaters
 </Heading>
+
+These parameters apply to every API endpoint.
 
 <Row>
   <Col>
@@ -31,11 +31,13 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
     ### Required parameters
   
     <Properties>
-  
       <Property name='color' type='string'>
+          The color(s) to be used in the requst. This can be hsl, rgb, or hex.
 
-        The color(s) to be used in the requst. This can be hsl, rgb, or hex.
-
+          <hr className="not-prose" />
+          
+          ### The color parameter can be in any of the following formats:
+          
           <Property name="hex" type="string">
             Can be "#FAFAFA" or "FAFAFA" or "fafafa"
           </Property>
@@ -47,47 +49,21 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
           <Property name="rgb" type="string">
             Can be "rgb(250, 250, 250)" 
           </Property>
-
-        Example Request url:
-        - "https://mogk.io/api/v1/{endpoint}?colors=rgb(135,206,235)"
-
+          
       </Property>
     </Properties>
 
-
-    ### Optional parameters
-    <Properties>
-          <Property name='formats' type='string • string[]'>      
-          You can use this paramater on every endpoint to specify the color formats you want the API to return. This can be a single format or an array of formats. By default, the API will return all formats.
-          
-          <Property name="hex" type="string">
-            - hex
-          </Property>
-
-          <Property name="hsl" type="string">
-            - hsl
-          </Property>
-
-          <Property name="rgb" type="string">
-            - rgb
-          </Property>
-          
-          Example Request url:
-            - "https://mogk.io/api/v1/{endpoint}?formats=rgb?formats=hex"
-            _The API will respond with all formats if not specified_
-          </Property>
-    </Properties>
 
 
   </Col>
    <Col sticky>
     <CodeGroup title="Making a request"  tag="GET" label="/api/v1/<ENDPOINT>">
       ```bash
-      curl "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>"
+      curl "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>"
       ```
 
       ```js
-      fetch("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+      fetch("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
@@ -96,7 +72,7 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
       ```python
       # Python (using requests library)
       import requests
-      response = requests.get("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+      response = requests.get("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
       if response.status_code == 200:
       print(response.json())
       else:
@@ -107,7 +83,7 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
       $curl = curl_init();
 
       curl_setopt_array($curl, [
-      CURLOPT_URL => "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>",
+      CURLOPT_URL => "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -135,7 +111,7 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
       require 'uri'
       require 'json'
 
-      uri = URI("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>&formats=<FORMATS>")
+      uri = URI("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
       response = Net::HTTP.get(uri)
       puts JSON.parse(response)
       ```
@@ -143,6 +119,15 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
 
   </Col>
 </Row>
+
+In some cases, an endpoint may accept multiple colors. In these cases, you can send your colors as an array of colors. For example, if you wanted to blend two colors, you could send the following request:
+
+<CodeGroup tag="GET" label="/api/v1/blending-colors" title="Color Array Example">
+```bash
+/api/v1/blend-colors?color=FAFAFA&color=000000
+```
+</CodeGroup>
+
 
 ---
 
@@ -152,7 +137,7 @@ Every API endpoint accepts color(s) via query params. The API endpoints are desi
 <Row>
   <Col>
 
-    This endpoint allows you to retrieve a paginated list of all your messages (in a conversation if a conversation id is provided). By default, a maximum of ten messages are shown per page.
+    All of the endpoint will return colors in one or more of these formats:
     <Properties>
       <Property name="hex" type="string">
         The Hexadecimal color value with the # symbol.
@@ -219,7 +204,7 @@ Always remember to encode your requests. For example, if you're using JavaScript
 // JavaScript Example: Encoding a Hexadecimal Color
 const hexColor = encodeURIComponent("#87CEEB");
 
-const url = "https://mogk.io/api/colors/blend?colors=${hexColor}";
+const url = "https://mogk.io/api/colors/blend?color=${hexColor}";
 // Use fetch or another method to send the request
 ```
 

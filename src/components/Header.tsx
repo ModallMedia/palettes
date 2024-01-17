@@ -106,13 +106,14 @@ export const Header = forwardRef<
         <div className="hidden min-[416px]:contents">
           <Button
             href="#"
+            variant="secondary"
             className="flex aspect-square items-center justify-center !px-1.5"
           >
             <div>
               <svg
                 viewBox="0 0 420 413"
                 className="h-6 w-6"
-                fill="#ffffff"
+                fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

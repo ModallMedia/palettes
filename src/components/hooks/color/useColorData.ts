@@ -9,7 +9,7 @@ export default function useColorData(hex: string) {
   }>(null)
   useEffect(() => {
     const fetchedColor = async () => {
-      const request = await fetch(`/api/v1/color-name?hex=${hex}`)
+      const request = await fetch(`/api/v1/color-name?color=${hex}`)
       const response = await request.json()
       console.log(response)
       setColorData(response)

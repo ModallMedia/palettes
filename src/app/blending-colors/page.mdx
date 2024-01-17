@@ -54,7 +54,7 @@ Blend two or more colors seamlessly, simulating paint mixing.
     <CodeGroup title="Example Request" tag="GET" label="/api/v1/blend">
 
       ```bash
-      curl "https://mogk.io/api/v1/blend-colors?colors=<HEX_ONE>&colors=<HEX_TWO>&colors=<HEX_THREE>"
+      curl "https://mogk.io/api/v1/blend-colors?color=<HEX_ONE>&color=<HEX_TWO>&color=<HEX_THREE>"
       ```
 
       ```js
@@ -89,7 +89,7 @@ Blend two or more colors seamlessly, simulating paint mixing.
       ```php
       // PHP (using cURL)
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, "https://mogk.io/api/v1/blend-colors?colors=%23ff0000&colors=%2300ff00&colors=%230000ff");
+      curl_setopt($ch, CURLOPT_URL, "https://mogk.io/api/v1/blend-colors?color=%23ff0000&color=%2300ff00&color=%230000ff");
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       $response = curl_exec($ch);
       $data = json_decode($response, true);

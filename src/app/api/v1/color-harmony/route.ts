@@ -9,6 +9,7 @@ import {
   monochromaticScheme,
 } from '@/components/utils/colorSchemes'
 import { hexToRgb, hslToHex, rgbToHsl } from '@/lib/color/colorConversions'
+import { handleInputColor } from '@/lib/color/handleInputColor'
 
 // Define a type for the color scheme generation functions
 type ColorSchemeFunction = (
@@ -43,24 +44,31 @@ const allSchemes: ColorSchemes = {
 }
 
 export async function GET(req: Request, { params }: any) {
-  const { searchParams } = new URL(req.url)
+  let rgb
+  try {
+    rgb = handleInputColor(req.url)
+    console.log(rgb)
+  } catch (error) {
+    console.log(error)
+    return new Response(JSON.stringify({ error: error }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
 
-  const color = searchParams.get('color')
-  const formats = searchParams.get('formats')
-  const schemeQuery = searchParams.get('schemes')
-
-  // Sanitize the input
-  if (typeof color !== 'string') {
+  if (Array.isArray(rgb)) {
     return new Response(
-      JSON.stringify({
-        error: '"Invalid query parameter. Color must be a string."',
-      }),
+      JSON.stringify({ error: 'Please provide only one color.' }),
       {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       },
     )
   }
+
+  const { searchParams } = new URL(req.url)
+  const formats = searchParams.get('formats')
+  const schemeQuery = searchParams.get('schemes')
 
   const requestedFormats = formats
     ? (formats as string)
@@ -74,14 +82,6 @@ export async function GET(req: Request, { params }: any) {
         .split(',')
         .map((scheme) => scheme.trim().toLowerCase())
     : Object.keys(allSchemes)
-
-  const rgb = convertToRGB(color)
-  if (!rgb) {
-    return new Response(JSON.stringify({ error: 'Invalid color HEX code.' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    })
-  }
   const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b)
 
   // Filter out any requested schemes that are not valid

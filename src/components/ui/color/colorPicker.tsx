@@ -239,9 +239,14 @@ const ColorPicker = ({
             className="flex w-full items-center justify-between rounded-lg border border-zinc-200 p-2  text-sm font-medium uppercase text-zinc-700 focus:ring-emerald-600 dark:border-zinc-700 dark:text-zinc-200"
             value={hex}
             onChange={(e) => {
-              setHex(e.target.value)
-              if (hex.length === 7) {
-                const [h, s, l] = hexToHsl(e.target.value)
+              const inputHex = e.target.value
+              setHex(inputHex)
+              // Check if the input is a valid hex code
+              const isValidHex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(
+                inputHex,
+              )
+              if (isValidHex && inputHex.length === 7) {
+                const [h, s, l] = hexToHsl(inputHex)
                 setHue(h)
                 setSaturation(s)
                 setLightness(l)
