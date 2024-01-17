@@ -129,7 +129,10 @@ function SmallPrint() {
         >
           Powered by Modall Media
         </Link>
-        <SocialLink href="#" icon={GitHubIcon}>
+        <SocialLink
+          href="https://github.com/ModallMedia/palettes"
+          icon={GitHubIcon}
+        >
           Follow us on GitHub
         </SocialLink>
       </div>

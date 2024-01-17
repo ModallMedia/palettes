@@ -4,27 +4,27 @@ import { Heading } from '@/components/Heading'
 const guides = [
   {
     released: true,
-    href: '/palettes/docs/retrieve-color-names',
+    href: '/color-name',
     name: 'Color Name',
     description: 'Find the name of the nearest color from a given value.',
   },
   {
     released: true,
-    href: '/palettes/docs/blending-colors',
+    href: '/blending-colors',
     name: 'Color Blending',
     description:
       'Blend two or more colors seamlessly, simulating paint mixing.',
   },
   {
     released: true,
-    href: '/palettes/docs/color-harmony',
+    href: '/color-harmony',
     name: 'Color Harmony',
     description:
       'Discover harmonious color schemes based on a single color input.',
   },
   {
     released: true,
-    href: '/palettes/docs/create-gradients',
+    href: '/gradient-stops',
     name: 'Create Gradient',
     description:
       'Generate smooth color gradients for design and web development.',

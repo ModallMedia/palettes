@@ -105,7 +105,8 @@ export const Header = forwardRef<
         </div>
         <div className="hidden min-[416px]:contents">
           <Button
-            href="#"
+            target="_blank"
+            href="https://github.com/ModallMedia/palettes"
             variant="secondary"
             className="flex aspect-square items-center justify-center !px-1.5"
           >
