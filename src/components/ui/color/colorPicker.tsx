@@ -205,7 +205,7 @@ const ColorPicker = ({
         }}
       />
 
-      <div className="pointer-events-auto z-30 flex w-full max-w-xs select-none flex-col items-center gap-2 rounded-2xl border  border-zinc-200 bg-white p-4 shadow-md  dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="pointer-events-auto z-30 flex w-full select-none flex-col items-center gap-2 rounded-2xl border border-zinc-200  bg-white p-4 shadow-md md:max-w-xs  dark:border-zinc-700 dark:bg-zinc-900">
         <DraggableColorCanvas
           hue={hue}
           setHue={setHue}

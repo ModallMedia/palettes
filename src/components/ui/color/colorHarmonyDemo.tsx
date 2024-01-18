@@ -2,55 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { ColorDisplay } from './colorDisplay'
 import ColorPicker from './colorPicker'
-import { isColorDark } from '@/lib/color/helpers/isColorDark'
 import { DynamicColorDisplay } from './dynamicColorDisplay'
-
-// a function that converts a hex code with or without the # to an hsl object
-
-function hexToHsl(hex: string) {}
-
-const ColorContainer = ({
-  hex,
-  hsl,
-  className,
-}: {
-  hex: string
-  hsl?: { h: number; s: number; l: number }
-  className: string
-}) => {
-  const isDark = isColorDark(hex)
-
-  const handleCopyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText('#' + hex.toUpperCase())
-      // You can display some sort of confirmation to the user if you like
-      console.log('Color copied to clipboard:', hex)
-    } catch (err) {
-      console.error('Failed to copy color to clipboard', err)
-    }
-  }
-
-  return (
-    <div
-      className={className + ' flex grow items-end p-4'}
-      style={{
-        background: hsl ? `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)` : hex,
-      }}
-    >
-      <button
-        aria-label="copy-hex-code"
-        onClick={handleCopyToClipboard}
-        className={
-          isDark
-            ? `rounded-md p-1 text-sm font-medium text-zinc-900  duration-75 hover:bg-black/10 group-hover:opacity-100 lg:px-2`
-            : `rounded-md p-1 text-sm font-medium text-zinc-100  duration-75 hover:bg-white/10 group-hover:opacity-100 lg:px-2`
-        }
-      >
-        {hex.toUpperCase()}
-      </button>
-    </div>
-  )
-}
 
 export function ColorHarmonyDemo() {
   const [hex, setHex] = useState('#F8D7B1')

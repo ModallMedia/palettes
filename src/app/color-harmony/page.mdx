@@ -57,9 +57,9 @@ This API allows you to generate color schemes based on a given color. You can sp
   </Col>
   <Col sticky>
 
-<CodeGroup title="Making a request">
+<CodeGroup title="Making a request" tag="GET" label="/api/v1/color-harmony">
   ```bash
-  curl "https://yourapi.domain.com/api/v1/color-harmony?color=<COLOR_VALUE>&formats=<FORMATS>&schemes=<SCHEMES>"
+  curl "https://palettespro.com/api/v1/color-harmony?color=<COLOR_VALUE>&formats=<FORMATS>&schemes=<SCHEMES>"
   ```
   ```js
   // JavaScript (using fetch in a browser environment)
@@ -69,7 +69,7 @@ This API allows you to generate color schemes based on a given color. You can sp
     const schemes = "analogous,complementary"; // Replace with desired schemes
 
 const response = await fetch(
-`https://yourapi.domain.com/api/v1/color-harmony?color=${color}&formats=${formats}&schemes=${schemes}`
+`https://palettespro.com/api/v1/color-harmony?color=${color}&formats=${formats}&schemes=${schemes}`
 );
 const data = await response.json();
 console.log(data);
@@ -86,7 +86,7 @@ params = {
   'schemes': 'analogous,complementary'  # Replace with desired schemes
 }
 
-response = requests.get('https://yourapi.domain.com/api/v1/color-harmony', params=params)
+response = requests.get('https://palettespro.com/api/v1/color-harmony', params=params)
 data = response.json()
 print(data)
 ````
@@ -94,7 +94,7 @@ print(data)
 ```php
 // PHP (using cURL)
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://yourapi.domain.com/api/v1/color-harmony?color=%23ff0000&formats=hsl,rgb,hex&schemes=analogous,complementary");
+curl_setopt($ch, CURLOPT_URL, "https://palettespro.com/api/v1/color-harmony?color=%23ff0000&formats=hsl,rgb,hex&schemes=analogous,complementary");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 $data = json_decode($response, true);
@@ -109,7 +109,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 
-uri = URI('https://yourapi.domain.com/api/v1/color-harmony')
+uri = URI('https://palettespro.com/api/v1/color-harmony')
 params = {
   'color': '#ff0000',  # Replace with your color value
   'formats': 'hsl,rgb,hex',  # Replace with desired formats

@@ -154,19 +154,22 @@ const PickColorButton = ({
 
 const GradientSwatch = ({
   hex,
+  parentIndex,
   isDark,
   onSelectColor,
 }: {
   hex: string
   isDark: boolean
+  parentIndex: number
   onSelectColor: (color: string, oldHex: string) => void
 }) => {
   const [open, setOpen] = useState(false)
   const [gradient, setGradient] = useState<any>([])
   useEffect(() => {
     const colorReq = async () => {
-      const req = await fetch(`/api/gradient-stops?hex=${hex}&count=15`)
+      const req = await fetch(`/api/v1/gradient-stops?color=${hex}&count=25`)
       const resp = await req.json()
+
       setGradient(resp)
     }
     if (open) {
@@ -174,6 +177,10 @@ const GradientSwatch = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
+
+  console.log(open)
+
+  console.log(gradient)
 
   // Define a function that determines the appropriate button classes based on isDark
   const buttonClass = (isSelected: boolean, dark: boolean) =>
@@ -204,14 +211,20 @@ const GradientSwatch = ({
         />
       </button>
       {open && (
-        <div className="absolute inset-0 flex flex-col">
+        <div className="absolute inset-0 flex flex-col max-md:overflow-y-scroll">
           {gradient.from_light_to_dark &&
             gradient['gradient'].map((gradient: any, idx: number) => {
               const isDark = isColorDark(gradient.hex)
 
               return (
                 <div
-                  className="group/swatch relative z-20 flex h-full w-full items-center  justify-center p-1"
+                  className={
+                    idx === 0
+                      ? parentIndex === 0
+                        ? 'group/swatch relative z-20 flex h-full w-full items-center justify-center  p-1 pt-[56px]'
+                        : 'group/swatch relative z-20 flex h-full w-full items-center justify-center  p-1 md:pt-[56px]'
+                      : 'group/swatch relative z-20 flex h-full w-full items-center  justify-center p-1'
+                  }
                   style={{ backgroundColor: gradient.hex }}
                   key={idx}
                 >
@@ -225,11 +238,11 @@ const GradientSwatch = ({
                   ) : (
                     <>
                       {gradient.isParam && (
-                        <ArrowRightIcon
+                        <div
                           className={
                             !isDark
-                              ? 'h-6 w-6 text-zinc-200'
-                              : 'h-6 w-6 text-zinc-800'
+                              ? 'h-6 w-6 rounded-full bg-zinc-200'
+                              : 'h-6 w-6 rounded-full bg-zinc-800'
                           }
                         />
                       )}
@@ -507,6 +520,7 @@ export default function Pallettes() {
                 isDark={isDark}
               />
               <GradientSwatch
+                parentIndex={index}
                 onSelectColor={replaceColorInPalette}
                 hex={hex}
                 isDark={isDark}

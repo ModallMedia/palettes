@@ -24,16 +24,16 @@ function BlendingColorsDemo() {
   }, [hex1, hex2])
 
   return (
-    <div className="not-prose flex w-full max-w-3xl flex-wrap justify-center gap-4 py-4 lg:max-w-5xl xl:flex-nowrap">
-      <div className="w-full shrink-0 min-[350px]:w-[320px] xl:order-1">
+    <div className="not-prose flex w-full max-w-3xl flex-wrap justify-center gap-4 py-4 xl:max-w-5xl xl:flex-nowrap">
+      <div className="w-full shrink-0 md:w-[320px] xl:order-1">
         <ColorPicker h={1} s={100} l={46} hex={hex1} setHex={setHex1} />
       </div>
-      <div className="order-3 w-full xl:order-2 xl:min-w-[275px]">
+      <div className="w-full sm:max-w-none md:order-3 md:max-w-[652px] xl:order-2 xl:min-w-[275px] xl:max-w-none">
         {hex && <ColorDisplay hex={hex} />}
       </div>
-      <div className="w-full shrink-0 min-[350px]:w-[320px] xl:order-3">
+      <div className="w-full shrink-0 md:w-[320px] xl:order-3">
         <ColorPicker h={240} s={100} l={46} hex={hex2} setHex={setHex2} />
-      </div>{' '}
+      </div>
     </div>
   )
 }

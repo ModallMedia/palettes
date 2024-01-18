@@ -59,11 +59,11 @@ These parameters apply to every API endpoint.
    <Col sticky>
     <CodeGroup title="Making a request"  tag="GET" label="/api/v1/<ENDPOINT>">
       ```bash
-      curl "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>"
+      curl "https://palettespro.com/api/v1/<ENDPOINT>?color=<COLOR_VALUE>"
       ```
 
       ```js
-      fetch("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
+      fetch("https://palettespro.com/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
@@ -72,7 +72,7 @@ These parameters apply to every API endpoint.
       ```python
       # Python (using requests library)
       import requests
-      response = requests.get("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
+      response = requests.get("https://palettespro.com/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
       if response.status_code == 200:
       print(response.json())
       else:
@@ -83,7 +83,7 @@ These parameters apply to every API endpoint.
       $curl = curl_init();
 
       curl_setopt_array($curl, [
-      CURLOPT_URL => "https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>",
+      CURLOPT_URL => "https://palettespro.com/api/v1/<ENDPOINT>?color=<COLOR_VALUE>",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
@@ -111,7 +111,7 @@ These parameters apply to every API endpoint.
       require 'uri'
       require 'json'
 
-      uri = URI("https://mogk.io/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
+      uri = URI("https://palettespro.com/api/v1/<ENDPOINT>?color=<COLOR_VALUE>")
       response = Net::HTTP.get(uri)
       puts JSON.parse(response)
       ```
@@ -204,7 +204,7 @@ Always remember to encode your requests. For example, if you're using JavaScript
 // JavaScript Example: Encoding a Hexadecimal Color
 const hexColor = encodeURIComponent("#87CEEB");
 
-const url = "https://mogk.io/api/colors/blend?color=${hexColor}";
+const url = "https://palettespro.com/api/colors/blend?color=${hexColor}";
 // Use fetch or another method to send the request
 ```
 

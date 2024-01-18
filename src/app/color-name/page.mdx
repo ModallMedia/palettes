@@ -53,9 +53,9 @@ This API endpoint allows you to get the name of a color based on its hex code.
   </Col>
   <Col sticky>
 
-<CodeGroup title="Making a request">
+<CodeGroup title="Making a request" tag="GET" label="/api/v1/color-name">
   ```bash
-  curl "https://yourapi.domain.com/api/v1/color-name?color=<HEX_CODE>"
+  curl "https://palettespro.com/api/v1/color-name?color=<HEX_CODE>"
   ```
   ```js
 // JavaScript (using fetch in a browser environment)
@@ -63,7 +63,7 @@ async function requestColorSchemes() {
 
   const color = "#ff0000"; // Replace with your color value
 
-  const url = encodeUriComponent(`https://yourapi.domain.com/api/v1/color-name?color=${color}`);
+  const url = encodeUriComponent(`https://palettespro.com/api/v1/color-name?color=${color}`);
 
   const response = await fetch(url);
 
@@ -80,7 +80,7 @@ import requests
 
 def request_color_schemes():
     color = "#ff0000"  # Replace with your color value
-    url = f"https://yourapi.domain.com/api/v1/color-name?color={color}"
+    url = f"https://palettespro.com/api/v1/color-name?color={color}"
     response = requests.get(url)
     data = response.json()
     return data
@@ -95,7 +95,7 @@ print(color_schemes)
 // PHP (using cURL)
 function requestColorSchemes() {
     $color = "#ff0000";  // Replace with your color value
-    $url = "https://yourapi.domain.com/api/v1/color-name?color=" . urlencode($color);
+    $url = "https://palettespro.com/api/v1/color-name?color=" . urlencode($color);
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -123,7 +123,7 @@ require 'uri'
 
 def request_color_schemes
   color = "#ff0000"  # Replace with your color value
-  url = URI("https://yourapi.domain.com/api/v1/color-name?color=#{URI.encode_www_form_component(color)}")
+  url = URI("https://palettespro.com/api/v1/color-name?color=#{URI.encode_www_form_component(color)}")
 
   response = Net::HTTP.get(url)
   JSON.parse(response)
