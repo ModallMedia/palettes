@@ -130,14 +130,14 @@ export function Books() {
             href={resource.href}
             key={index}
             target="_blank"
-            className="relative flex w-full cursor-pointer flex-row transition-transform duration-500 ease-in-out"
+            className="relative flex aspect-[240/280] w-full cursor-pointer flex-row transition-transform duration-500 ease-in-out"
           >
-            <div className="flex h-[280px] flex-row overflow-hidden rounded-l-lg border-b border-l border-zinc-100 dark:border-zinc-700">
+            <div className="flex h-full flex-row overflow-hidden rounded-l-lg border-b border-l border-zinc-100 xl:h-[280px] dark:border-zinc-700">
               <div className=" h-full w-6 bg-gradient-to-r from-zinc-100 to-white dark:from-zinc-700 dark:to-zinc-900" />
               <div className=" h-full w-1 bg-gradient-to-l from-zinc-100 to-white dark:from-zinc-700 dark:to-zinc-900" />
               <div className=" h-full w-1 bg-gradient-to-r from-zinc-100 to-white dark:from-zinc-700 dark:to-zinc-900" />
             </div>
-            <div className="flex h-full w-full flex-col rounded-r-md bg-gradient-to-r from-white  to-zinc-100 p-6 dark:from-zinc-900 dark:to-zinc-700">
+            <div className="flex w-full flex-col rounded-r-md bg-gradient-to-r from-white to-zinc-100  p-6 xl:h-[280px] dark:from-zinc-900 dark:to-zinc-700">
               <p className="font-bold text-zinc-900 dark:text-white">
                 {resource.name}
               </p>
