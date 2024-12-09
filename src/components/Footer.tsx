@@ -114,6 +114,23 @@ function SocialLink({
   )
 }
 
+const ModallLogo = (props: any) => {
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 25 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3.53057 9.37579C3.53057 15.7252 3.52304 15.4185 3.69586 16.1039C4.26437 18.3581 6.17284 20.0509 8.48469 20.3514C8.99735 20.4181 10.031 20.4355 10.4198 20.384C12.4951 20.1091 14.2278 18.6919 14.8805 16.7353C14.935 16.572 15.3308 15.0067 15.7599 13.257C16.2801 11.136 16.5559 10.0582 16.5875 10.0234C16.6498 9.95474 16.7675 9.95701 16.8319 10.0281C16.882 10.0834 16.8834 10.1764 16.8834 13.3022V16.5193L16.9444 16.7938C17.0837 17.4217 17.3554 18.0448 17.7018 18.531C17.9365 18.8604 18.4353 19.3579 18.7639 19.5905C19.437 20.0666 20.292 20.3675 21.0982 20.4119L21.4166 20.4295L21.4085 13.6005L21.4005 6.77142L21.3399 6.50832C21.2618 6.16951 21.1697 5.91602 21.0088 5.59682C20.8258 5.23385 20.6361 4.97641 20.3219 4.66448C19.3061 3.65607 17.8481 3.34756 16.3829 3.83107C15.2109 4.21783 14.2513 5.09571 13.7738 6.21788C13.667 6.46895 13.5829 6.72897 13.4876 7.10288L13.4582 7.21836L13.2929 6.99486C12.2234 5.54957 10.6186 4.43639 8.88796 3.93932C7.86781 3.64632 7.34722 3.59928 5.12019 3.5989L3.53057 3.59863V9.37579Z"
+      />
+    </svg>
+  )
+}
+
 function SmallPrint() {
   return (
     <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 sm:flex-row dark:border-white/5">
@@ -123,12 +140,23 @@ function SmallPrint() {
       </p>
       <div className="flex gap-4">
         <Link
+          className="flex items-center gap-1 text-xs text-zinc-600 dark:text-zinc-400"
+          target="_blank"
+          href="https://modall.ca"
+        >
+          Development by
+          <span className="flex items-center gap-px">
+            <ModallLogo className="size-5" />
+            Modall
+          </span>
+        </Link>
+        {/* <Link
           target="_blank"
           className="text-xs text-zinc-600 underline dark:text-zinc-400"
           href="https://modallmedia.com"
         >
           Powered by Modall Media
-        </Link>
+        </Link> */}
         <SocialLink
           href="https://github.com/ModallMedia/palettes"
           icon={GitHubIcon}
