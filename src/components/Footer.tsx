@@ -150,13 +150,6 @@ function SmallPrint() {
             Modall
           </span>
         </Link>
-        {/* <Link
-          target="_blank"
-          className="text-xs text-zinc-600 underline dark:text-zinc-400"
-          href="https://modallmedia.com"
-        >
-          Powered by Modall Media
-        </Link> */}
         <SocialLink
           href="https://github.com/ModallMedia/palettes"
           icon={GitHubIcon}
