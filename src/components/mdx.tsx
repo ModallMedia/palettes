@@ -5,7 +5,7 @@ import { Feedback } from '@/components/Feedback'
 import { Heading } from '@/components/Heading'
 import { Prose } from '@/components/Prose'
 
-export const a = Link
+export const a = (props: any) => <Link target="_blank" {...props} />
 export { Button } from '@/components/Button'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
 

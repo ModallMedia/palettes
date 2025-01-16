@@ -187,10 +187,6 @@ const GradientSwatch = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  console.log(open)
-
-  console.log(gradient)
-
   // Define a function that determines the appropriate button classes based on isDark
   const buttonClass = (isSelected: boolean, dark: boolean) =>
     `p-1 h-fit m-auto active:ring-0 relative z-30 focus:ring-0 focus:border-0 group-hover:opacity-100 hover:opacity-100 md:opacity-0 duration-75 rounded-md ${
@@ -450,7 +446,6 @@ export default function Pallettes() {
     setCurrentPalette((prevPalette) => {
       // First, find the index of the color to be replaced
       const index = prevPalette.findIndex((val) => val === oldColor)
-      console.log(index)
       if (index === -1) {
         // If the color is not found, return the previous palette without changes
         return prevPalette
@@ -482,8 +477,6 @@ export default function Pallettes() {
       return prevLockedColors
     })
   }
-
-  console.log(currentPalette, lockedColors)
 
   return (
     <main className={`flex min-h-screen flex-col ${inter.className}`}>

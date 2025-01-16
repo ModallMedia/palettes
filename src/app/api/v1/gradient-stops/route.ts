@@ -21,7 +21,7 @@ function generateGradientWithInputColor(
   // Normalize s and l to be fractions of 1
   hsl.s /= 100
   hsl.l /= 100
-  console.log(hsl)
+  // console.log(hsl)
 
   // Prepare the gradient array and find the position for the input color
   let gradient: string[] = []
@@ -47,7 +47,7 @@ export async function GET(req: Request, { params }: any) {
   try {
     inputRgb = handleInputColor(req.url)
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return new Response(JSON.stringify({ error: error }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },

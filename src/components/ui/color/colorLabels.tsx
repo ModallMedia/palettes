@@ -21,7 +21,7 @@ export const CopyHexButton = ({
         setCopied(false)
       }, 1000)
       // You can display some sort of confirmation to the user if you like
-      console.log('Color copied to clipboard:', hex)
+      // console.log('Color copied to clipboard:', hex)
     } catch (err) {
       console.error('Failed to copy color to clipboard', err)
     }

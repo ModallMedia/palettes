@@ -19,8 +19,6 @@ export function Layout({
 }) {
   let pathname = usePathname()
 
-  console.log(pathname)
-
   if (pathname.includes('/book') || pathname.includes('/generator')) {
     return (
       <SectionProvider sections={allSections[pathname] ?? []}>

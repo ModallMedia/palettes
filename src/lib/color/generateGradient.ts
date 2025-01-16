@@ -53,8 +53,6 @@ export function generateGradients(
   if (count % 2 !== 0) {
     newCount++
   }
-  console.log(newCount)
-
   const inputHex = rgbToHex(inputRgb.r, inputRgb.g, inputRgb.b)
 
   try {

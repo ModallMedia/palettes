@@ -55,8 +55,6 @@ export function GradientColorDemo() {
 
   const [count, setCount] = useState(10)
   const gradientStops = useGradientStops(color.hex, count)
-  console.log(gradientStops)
-
   return (
     <div className="flex max-w-3xl flex-col lg:max-w-5xl">
       <div className="not-prose flex w-full max-w-3xl gap-4 border-t border-zinc-900/5 pt-10 max-sm:flex-col max-sm:justify-center first:max-sm:mx-auto lg:max-w-5xl ">

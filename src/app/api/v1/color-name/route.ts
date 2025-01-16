@@ -7,7 +7,7 @@ export async function GET(req: Request) {
   try {
     inputRgb = handleInputColor(req.url)
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return new Response(JSON.stringify({ error: error }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
