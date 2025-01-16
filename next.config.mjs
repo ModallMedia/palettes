@@ -16,6 +16,17 @@ const withMDX = nextMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.palettespro.com" }],
+        destination: `https://palettespro.com/:path*`,
+        permanent: true,
+        statusCode: 301,
+      },
+    ];
+  }
 }
 
 export default withSearch(withMDX(nextConfig))
