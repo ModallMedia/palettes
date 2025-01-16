@@ -5,7 +5,6 @@ import ColorPickerAndDisplay from '@/components/ui/color/colorPickerAndDisplay'
 import BlendingColorsDemo from '@/components/ui/color/blendingColorsDemo'
 import { Heading } from '@/components/Heading'
 import { ColorHarmonyDemo } from '@/components/ui/color/colorHarmonyDemo'
-
 export const metadata = {
   title: 'Color Name API',
   description:
@@ -15,6 +14,7 @@ export const metadata = {
 export const sections = [
   { title: "Making a Request", id: "making-a-request", tag: "GET" },
   { title: "Color Name Demo", id: "demo" },
+  { title: "Debounce Demo", id: "debounce-demo" },
 ];
 
 
@@ -25,6 +25,8 @@ This API endpoint allows you to get the name of a color based on its hex code.
 <Note>
   If you appreciate our API and would like to support us, consider buying our book. It's a great way to deepen your understanding while helping us continue providing quality services. You can find the book at [our book page](/book). Your support is greatly appreciated!
 </Note>
+
+Please debounce your requests to the API if they're coming from a client-side application. This will help prevent rate limiting and ensure the best performance for all users.  libraries like [lodash](https://lodash.com/docs/4.17.15#debounce) or [use-debounce](https://www.npmjs.com/package/use-debounce) can help you with this.
 
 ---
 
@@ -160,6 +162,70 @@ puts color_schemes
 </Heading>
 
 <ColorPickerAndDisplay />
+
+---
+<Heading id="debounce-demo">
+Debounced Color Name Request Demo
+</Heading>
+
+If you're using React, here's a hook that can help you debounce your requests to the API:
+
+<CodeGroup tag="GET" label="/api/v1/color-name" title="Debounced request example.">
+```tsx
+import { useEffect, useState } from 'react'
+import { useDebounce } from 'use-debounce'
+type hsl = {
+  h: number
+  s: number
+  l: number
+}
+
+type hex = {
+  hex: string
+}
+export type Color = hsl & hex
+
+export default function useColorData(hex: string) {
+  const [colorData, setColorData] = useState<null | {
+    name: string
+    hex: string
+    rgb: { r: number; g: number; b: number }
+    closest_color: { hex: string; label: string }
+  }>({
+    name: 'Vanilla Cream',
+    hex: '##F8D9AF',
+    rgb: {
+      r: 248,
+      g: 214,
+      b: 175,
+    },
+    closest_color: {
+      hex: '#F8D9AF',
+      label: 'Vanilla Cream',
+    },
+  })
+
+  // Debounce the hex value with a 300ms delay
+  const [debouncedHex] = useDebounce(hex, 300)
+  console.log(colorData)
+  useEffect(() => {
+    const fetchedColor = async () => {
+      console.log('fetching')
+      const request = await fetch(
+        `https://palettespro.com/api/v1/color-name?color=${debouncedHex}`,
+      )
+      const response = await request.json()
+      console.log(response)
+      setColorData(response)
+    }
+    fetchedColor()
+  }, [debouncedHex]) // Use debouncedHex instead of hex in the dependency array
+
+  return colorData
+}
+```
+</CodeGroup>
+
 
  ## Future Improvements
  

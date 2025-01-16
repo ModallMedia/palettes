@@ -2,38 +2,66 @@
 
 import React, { useEffect, useState } from 'react'
 import { ColorDisplay } from './colorDisplay'
-import ColorPicker from './colorPicker'
+import ColorPicker, { Color, hexToHsl, sanitizeHex } from './colorPicker'
+import { useDebounce } from 'use-debounce'
 
-function BlendingColorsDemo() {
-  const [hex1, setHex1] = useState('#EF0000')
-  const [hex2, setHex2] = useState('#0000EC')
+export function useBlendColors(color1: Color, color2: Color) {
+  const [output, setOutput] = useState<Color | null>(null)
 
-  const [hex, setHex] = useState('#780076')
+  // Debounce both color values
+  const [debouncedColor1] = useDebounce(color1, 100)
+  const [debouncedColor2] = useDebounce(color2, 100)
 
   useEffect(() => {
     const fetchBlended = async () => {
-      const url = `/api/v1/blend-colors?color=${encodeURIComponent(
-        hex1,
-      )}&color=${encodeURIComponent(hex2)}`
-      const request = await fetch(url)
-      const response = await request.json()
-      setHex(response.blendedColor) // Ensure that 'response.blendedColor' is the correct key
+      try {
+        const url = `/api/v1/blend-colors?color=${encodeURIComponent(
+          debouncedColor1.hex,
+        )}&color=${encodeURIComponent(debouncedColor2.hex)}`
+
+        const request = await fetch(url)
+        const response = await request.json()
+        const blended_hex = response.blendedColor
+        const hsl = hexToHsl({ hex: blended_hex })
+
+        setOutput({
+          ...hsl,
+          hex: sanitizeHex(blended_hex),
+        })
+      } catch (error) {
+        console.error('Error blending colors:', error)
+        // You might want to set an error state here
+      }
     }
 
-    fetchBlended()
-  }, [hex1, hex2])
+    if (debouncedColor1?.hex && debouncedColor2?.hex) {
+      fetchBlended()
+    }
+  }, [debouncedColor1, debouncedColor2])
+
+  return output
+}
+
+function BlendingColorsDemo() {
+  const [color, setColor] = useState<Color>(() => {
+    const hex = '#0000EC'
+    const hsl = hexToHsl({ hex: hex })
+    return { ...hsl, hex: sanitizeHex(hex) }
+  })
+  const [color2, setColor2] = useState<Color>(() => {
+    const hex = '#780076'
+    const hsl = hexToHsl({ hex: hex })
+    return { ...hsl, hex: sanitizeHex(hex) }
+  })
+  const output = useBlendColors(color, color2)
 
   return (
-    <div className="not-prose flex w-full max-w-3xl flex-wrap justify-center gap-4 py-4 xl:max-w-5xl xl:flex-nowrap">
-      <div className="w-full shrink-0 md:w-[320px] xl:order-1">
-        <ColorPicker h={1} s={100} l={46} hex={hex1} setHex={setHex1} />
+    <div className="not-prose flex w-full max-w-3xl flex-col flex-wrap items-center justify-center gap-4 py-4 xl:max-w-5xl xl:flex-row">
+      <ColorPicker color={color} setColor={setColor} />
+      <div className="w-full max-w-[305px] xl:max-w-none xl:flex-1">
+        {output && <ColorDisplay color={output} />}
       </div>
-      <div className="w-full sm:max-w-none md:order-3 md:max-w-[652px] xl:order-2 xl:min-w-[275px] xl:max-w-none">
-        {hex && <ColorDisplay hex={hex} />}
-      </div>
-      <div className="w-full shrink-0 md:w-[320px] xl:order-3">
-        <ColorPicker h={240} s={100} l={46} hex={hex2} setHex={setHex2} />
-      </div>
+      <ColorPicker color={color2} setColor={setColor2} />
     </div>
   )
 }

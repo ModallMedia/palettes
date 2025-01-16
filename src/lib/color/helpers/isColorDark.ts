@@ -1,6 +1,7 @@
 export const isColorDark = (hex: string): boolean => {
+  const input_hex = `#${hex.replaceAll('#', '')}`
   try {
-    const rgbArray = hex
+    const rgbArray = input_hex
       .replace(
         /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
         (m, r, g, b) => r + r + g + g + b + b,

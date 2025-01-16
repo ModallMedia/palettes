@@ -1,7 +1,9 @@
 'use client'
 import { isColorDark } from '@/lib/color/helpers/isColorDark'
 import { CheckCircleIcon, CheckIcon } from '@heroicons/react/24/solid'
+import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
+import { CopyHexButton } from './colorLabels'
 
 const StretchyColor = ({
   color,
@@ -13,55 +15,32 @@ const StretchyColor = ({
   amount: number
 }) => {
   const [hovered, setHovered] = useState(false)
-  const [copied, setCopied] = useState(false)
+  // Calculate the base width percentage when not hovered
+  // If we have 5 items, each takes up 20% (1/5 = 0.2 or 20%)
+  const normalWidth = (1 / amount) * 100
 
-  const handleCopyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText('#' + color.toUpperCase())
-      // You can display some sort of confirmation to the user if you like
-      setCopied(true)
-      console.log('Color copied to clipboard:', color)
-    } catch (err) {
-      console.error('Failed to copy color to clipboard', err)
-    }
-  }
+  // Calculate the expanded width percentage when hovered
+  // We subtract 1 from amount to redistribute space among remaining items
+  // If we have 5 items, on hover each would take up 25% (1/4 = 0.25 or 25%)
+  // Calculate expanded width and ensure it's at least 15%
+  const expandedWidth = Math.max((1 / (amount - 1)) * 100, 25)
 
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => setCopied(false), 1000)
-    }
-  }, [copied])
+  // Format the width to 2 decimal places and add % symbol
+  const widthStyle = `${(hovered ? expandedWidth : normalWidth).toFixed(2)}%`
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => handleCopyToClipboard()}
-      className="group relative duration-75"
+      className="group relative duration-200 ease-in-out"
       style={{
-        backgroundColor: '#' + color,
-        width: hovered
-          ? `${((1 / (amount - 1)) * 100).toFixed(2)}%`
-          : `${((1 / amount) * 100).toFixed(2)}%`,
+        backgroundColor: color,
+        width: widthStyle,
       }}
     >
-      <p
-        className={
-          !isDark
-            ? 'absolute inset-0 flex cursor-pointer items-center justify-center overflow-hidden rounded-md p-1 text-sm font-bold text-transparent duration-75  hover:text-zinc-100 focus:border-0 focus:ring-0 active:ring-0 group-hover:opacity-100 lg:text-base '
-            : 'absolute inset-0 flex cursor-pointer items-center justify-center overflow-hidden rounded-md p-1 text-sm font-bold text-transparent duration-75  hover:text-zinc-900 focus:border-0 focus:ring-0 active:ring-0 group-hover:opacity-100 lg:text-base '
-        }
-      >
-        <span
-          className={
-            isDark
-              ? 'flex h-fit  w-fit items-center justify-center gap-1 rounded-md p-2 uppercase duration-75 group-hover:bg-black/10 lg:px-2'
-              : 'flex h-fit w-fit  items-center justify-center gap-1 rounded-md p-2 uppercase duration-75 group-hover:bg-white/10 lg:px-2'
-          }
-        >
-          {copied ? <CheckIcon className="h-5 w-5" /> : color}
-        </span>
-      </p>
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 *:!text-base *:*:*:!text-sm group-hover:opacity-100">
+        <CopyHexButton isDark={isDark} hex={color} />
+      </div>
     </div>
   )
 }
@@ -73,7 +52,7 @@ export function DynamicColorDisplay({
 }: {
   title: string
   description?: string
-  colors: string[]
+  colors: any[]
 }) {
   return (
     <div className="not-prose flex w-full flex-col gap-2">
@@ -87,12 +66,11 @@ export function DynamicColorDisplay({
       )}
       <div className="flex h-full min-h-[80px] w-full overflow-hidden rounded-xl">
         {colors.map((color, index) => {
-          const hashRemoved = color.replace('#', '')
-          const isDark = isColorDark(color)
+          const isDark = color.hsl.l > 50
 
           return (
             <StretchyColor
-              color={hashRemoved}
+              color={color.hex}
               amount={colors.length}
               isDark={isDark}
               key={index}

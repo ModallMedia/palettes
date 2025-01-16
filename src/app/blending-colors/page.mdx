@@ -13,6 +13,7 @@ export const metadata = {
 export const sections = [
   { title: "Making a Request", id: "Making a Request", tag: "GET" },
   { title: "Blending Colors Demo", id: "demo" },
+  { title: "Debounced Hook Demo", id: "debounced-hook-demo" },
 ];
 
 # Blending Colors
@@ -135,5 +136,66 @@ Blend two or more colors seamlessly, simulating paint mixing.
 </Heading>
 
 <BlendingColorsDemo />
+---
+<Heading level={2} id='debounced-hook-demo'>
+  Debounced React Hook Demo
+</Heading>
+You can use this hook to prevent overwhelming the API with requests from a client-side application. This will help prevent rate limiting and ensure the best performance for all users.
+
+<CodeGroup tag="GET" label="/api/v1/blend-colors" title="Debounced request example.">
+```tsx
+'use client'
+import React, { useEffect, useState } from 'react'
+import { useDebounce } from 'use-debounce'
+
+type hsl = {
+  h: number
+  s: number
+  l: number
+}
+
+type hex = {
+  hex: string
+}
+export type Color = hsl & hex
+
+export function useBlendColors(color1: Color, color2: Color) {
+  const [output, setOutput] = useState<Color | null>(null)
+
+  // Debounce both color values
+  const [debouncedColor1] = useDebounce(color1, 100)
+  const [debouncedColor2] = useDebounce(color2, 100)
+
+  useEffect(() => {
+    const fetchBlended = async () => {
+      try {
+        const url = `https://palettespro.com/api/v1/blend-colors?color=${encodeURIComponent(
+          debouncedColor1.hex,
+        )}&color=${encodeURIComponent(debouncedColor2.hex)}`
+
+        const request = await fetch(url)
+        const response = await request.json()
+        const blended_hex = response.blendedColor
+        const hsl = hexToHsl({ hex: blended_hex })
+
+        setOutput({
+          ...hsl,
+          hex: sanitizeHex(blended_hex),
+        })
+      } catch (error) {
+        console.error('Error blending colors:', error)
+        // You might want to set an error state here
+      }
+    }
+
+    if (debouncedColor1?.hex && debouncedColor2?.hex) {
+      fetchBlended()
+    }
+  }, [debouncedColor1, debouncedColor2])
+
+  return output
+}
+```
+</CodeGroup>
 
 ---

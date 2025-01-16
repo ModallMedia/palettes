@@ -1,10 +1,8 @@
 'use client'
-
 import { Inter } from 'next/font/google'
 import colorCodes from '@/components/data/colors.json'
 import { useEffect, useMemo, useState } from 'react'
 import {
-  ArrowRightIcon,
   ArrowUturnLeftIcon,
   EyeDropperIcon,
   LockClosedIcon,
@@ -13,9 +11,12 @@ import {
   SwatchIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid'
-import useColorData from '@/components/data/color/useColorData'
 import useRandomNumberOnSpacePress from '@/components/data/color/useRandomNumberOnSpacePress'
-import ColorPicker from '@/components/ui/color/colorPicker'
+import ColorPicker, {
+  Color,
+  hexToHsl,
+  sanitizeHex,
+} from '@/components/ui/color/colorPicker'
 import { isColorDark } from '@/lib/color/helpers/isColorDark'
 import { ColorLabels } from '@/components/ui/color/colorLabels'
 const inter = Inter({
@@ -104,7 +105,7 @@ const RemoveColorButton = ({
   )
 }
 const PickColorButton = ({
-  hex: hexDefault,
+  hex,
   isDark,
   onClick,
 }: {
@@ -112,8 +113,16 @@ const PickColorButton = ({
   isDark: boolean
   onClick: (color: string, oldHex: string) => void
 }) => {
-  const [hex, setHex] = useState('#' + hexDefault)
+  const [color, setColor] = useState<Color>(() => {
+    const hsl = hexToHsl({ hex: hex })
+    return { ...hsl, hex: sanitizeHex(hex) }
+  })
+
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    onClick(color.hex, hex)
+  }, [color, hex, onClick])
 
   return (
     <>
@@ -146,7 +155,7 @@ const PickColorButton = ({
           className="absolute inset-0"
           onClick={() => setOpen(false)}
         />
-        <ColorPicker hex={hex} setHex={setHex} />
+        <ColorPicker color={color} setColor={setColor} />
       </div>
     </>
   )
@@ -480,7 +489,7 @@ export default function Pallettes() {
     <main className={`flex min-h-screen flex-col ${inter.className}`}>
       <div className="relative flex h-full w-full grow flex-col md:flex-row">
         {enrichedPalette.map(({ hex, position, isLocked }, index: number) => {
-          const isDark = isColorDark(`#${hex}`)
+          const isDark = isColorDark(hex)
 
           // const [gradient, setGradient] = useState(false);
           return (

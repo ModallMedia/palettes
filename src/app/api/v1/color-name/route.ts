@@ -34,11 +34,10 @@ export async function GET(req: Request) {
       closestColor = { hex: color.hex, label: color.label }
     }
   }
-
   return new Response(
     JSON.stringify({
       name: closestColor.label,
-      hex: ('#' + closestColor.hex).toUpperCase(),
+      hex: closestColor.hex.toUpperCase(),
       rgb: inputRgb,
       closest_color: closestColor,
     }),
